@@ -1,0 +1,19 @@
+services:
+  mc:
+    image: itzg/minecraft-server:java8
+    container_name: minecraft-cc
+    restart: always
+    environment:
+      EULA: "TRUE"
+      TYPE: CUSTOM
+      GENERIC_PACK: /modpacks-cc/CCUServerPackBat-0.12.1.zip # matches mounted folder
+      CUSTOM_SERVER: /data/forge.jar
+      JVM_OPTS: "-Xmx16G -Xms16G -Dmax-tick-time=60000"
+      MEMORY: 16G
+    ports:
+      - 1414:25565
+    volumes:
+      - ./modpacks:/modpacks-cc
+      - crazycraft_data:/data
+volumes:
+  crazycraft_data: {}
